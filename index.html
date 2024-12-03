@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Food Guide</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Food Guide</h1>
+    <ul>
+        {% for food in foods %}
+        <li>
+            <a href="{{ url_for('food_detail', food_id=food.id) }}">{{ food.name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <div>
+        <a href="{{ url_for('login') }}" class="button">Login</a>
+        <a href="{{ url_for('register') }}" class="button">Register</a>
+        <a href="https://your-app-name.onrender.com" class="button">View Application</a>
+        <a href="https://github.com/Nuqtt/foodWebsite" class="button">View Source Code</a>
+    </div>
+</body>
+</html>
